@@ -19,5 +19,22 @@ struct node {
 };
 
 struct node * reverseLinkedList(struct node *head) {
-	return NULL;
+	if (!head)
+	{
+		return NULL;
+	}
+
+	struct node *temp, *temp1, *var;
+	temp = head;
+	var = NULL;
+	while (temp != NULL)
+	{
+		temp1 = var;
+		var = temp;
+		temp = temp->next;
+		var->next = temp1;
+	}
+	head = var;
+
+	return head;
 }
