@@ -27,8 +27,8 @@ struct node * insertAtEveryKthNode(struct node *head, int K) {
 	struct node *h = head, *s = head->next;
 	struct node *temp;
 	int i = 1;
-	printf(" head is at %d\n", h->num);
-	printf(" second  is at %d\n", s->num);
+	//printf(" head is at %d\n", h->num);
+	//printf(" second  is at %d\n", s->num);
 	while (s)
 	{
 		if (i%K == 0)
