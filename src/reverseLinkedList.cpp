@@ -24,17 +24,16 @@ struct node * reverseLinkedList(struct node *head) {
 		return NULL;
 	}
 
-	struct node *temp, *temp1, *var;
-	temp = head;
-	var = NULL;
-	while (temp != NULL)
+	struct node *temp1, *temp2, *temp3 = NULL;
+	temp1 = head;
+	while (temp1 != NULL)
 	{
-		temp1 = var;
-		var = temp;
-		temp = temp->next;
-		var->next = temp1;
+		temp2 = temp3;
+		temp3 = temp1;
+		temp1 = temp1->next;
+		temp3->next = temp2;
 	}
-	head = var;
+	head = temp3;
 
 	return head;
 }
