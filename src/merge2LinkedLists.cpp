@@ -19,25 +19,40 @@ struct node {
 };
 
 struct node * merge2LinkedLists(struct node *head1, struct node *head2) {
-	if (!head1 || !head2)
+	if (head1 == NULL)
 	{
-		return NULL;
+		return head2;
 	}
-	struct node *temp;
-	while (head1 || head2)
+	if (head2 == NULL)
 	{
-		if (head1->num <= head2->num)
-		{
-			temp = head1->next;
-			head1->next = head2;
-			head2 = head2->next;
-			head1->next->next = temp;
-		}
-		else
-		{
-			head1=head1->next;
-		}
+		return head1;
 	}
+	struct node *p1 = head1, *p2 = head2;
+	while (p1->next)
+	{
+		p1 = p1->next;
+	}
+	p1->next = p2;
+	
+	struct node *prev = head1, *curr = head1->next;
+	while (curr)
+	{
+		prev = head1;
+		while (prev)
+		{
+			if (prev->num > curr->num)
+			{
+				int temp = prev->num;
+				prev->num = curr->num;
+				curr->num = temp;
+			}
+			prev = prev->next;
+
+		}
+		curr = curr->next;
+	}
+	
+	return head1;
 }
 
 
